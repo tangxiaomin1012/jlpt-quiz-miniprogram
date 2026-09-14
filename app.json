@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/vocab/vocab",
+    "pages/cloze/cloze",
+    "pages/reading/reading",
+    "pages/profile/profile",
+    "pages/quiz/quiz"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "backgroundColor": "#F6F7FB"
+  },
+  "tabBar": {
+    "color": "#8A8A8A",
+    "selectedColor": "#D64545",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/vocab/vocab",
+        "text": "单词"
+      },
+      {
+        "pagePath": "pages/cloze/cloze",
+        "text": "填空"
+      },
+      {
+        "pagePath": "pages/reading/reading",
+        "text": "阅读"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

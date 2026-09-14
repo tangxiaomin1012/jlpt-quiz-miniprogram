@@ -1,0 +1,56 @@
+<navigation-bar title="我的" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="profile">
+    <!-- 总览 -->
+    <view class="stat-card">
+      <view class="stat-row">
+        <view class="stat">
+          <view class="stat-num">{{totalQuizzes}}</view>
+          <view class="stat-label">练习次数</view>
+        </view>
+        <view class="stat">
+          <view class="stat-num">{{totalQuestions}}</view>
+          <view class="stat-label">答题总数</view>
+        </view>
+        <view class="stat">
+          <view class="stat-num">{{accuracyText}}%</view>
+          <view class="stat-label">总正确率</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 最佳成绩 -->
+    <view class="section-title">最佳成绩</view>
+    <view class="best-card">
+      <view class="best-table">
+        <view class="best-row best-row--head">
+          <view class="best-cell best-cell--head">类别</view>
+          <view class="best-cell best-cell--head" wx:for="{{bests[0].cells}}" wx:key="level">{{item.level}}</view>
+        </view>
+        <view class="best-row" wx:for="{{bests}}" wx:key="category" wx:for-item="row">
+          <view class="best-cell best-cell--name">{{row.categoryName}}</view>
+          <view class="best-cell" wx:for="{{row.cells}}" wx:key="level">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 最近记录 -->
+    <view class="section-title">最近记录</view>
+    <view class="record-card" wx:if="{{records.length === 0}}">
+      <view class="record-empty">还没有答题记录，去练习吧</view>
+    </view>
+    <view class="record-card" wx:else>
+      <view class="record-item" wx:for="{{records}}" wx:key="key">
+        <view class="record-info">
+          <view class="record-title">{{item.title}}</view>
+          <view class="record-time">{{item.timeText}}</view>
+        </view>
+        <view class="record-score">{{item.score}} / {{item.total}}</view>
+      </view>
+    </view>
+
+    <!-- 清空记录 -->
+    <view class="clear-btn" bindtap="clearHistory" wx:if="{{records.length > 0}}">清空记录</view>
+  </view>
+</scroll-view>

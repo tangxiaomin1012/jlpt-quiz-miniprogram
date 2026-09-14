@@ -1,0 +1,65 @@
+<navigation-bar title="{{categoryName}} · {{level}}" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <!-- 答题中 -->
+  <view class="quiz" wx:if="{{!finished}}">
+    <!-- 空题库 -->
+    <view class="empty" wx:if="{{total === 0}}">
+      <view class="empty-text">该级别暂无题目，请先补充题库</view>
+    </view>
+
+    <block wx:else>
+      <!-- 进度 -->
+      <view class="progress-row">
+        <view class="progress-text">{{index + 1}} / {{total}}</view>
+        <view class="progress-text correct-text">已答对 {{correctCount}} 题</view>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-inner" style="width: {{(index + 1) / total * 100}}%"></view>
+      </view>
+
+      <!-- 题目卡片 -->
+      <view class="card">
+        <view class="passage" wx:if="{{current.passage}}">{{current.passage}}</view>
+        <view class="question-row">
+          <view class="question-id">No. {{current.idDisplay}}</view>
+          <view class="question">{{current.question}}</view>
+        </view>
+
+        <view
+          class="option {{answered && index === current.answer ? 'option--correct' : ''}} {{answered && index === selected && index !== current.answer ? 'option--wrong' : ''}} {{answered && index !== selected && index !== current.answer ? 'option--dim' : ''}}"
+          wx:for="{{current.options}}"
+          wx:key="*this"
+          data-index="{{index}}"
+          bindtap="choose"
+        >
+          <view class="option-letter">{{letters[index]}}</view>
+          <view class="option-text">{{item}}</view>
+        </view>
+
+        <!-- 解析 -->
+        <view class="explanation" wx:if="{{answered}}">
+          <view class="explanation-title">{{selected === current.answer ? '回答正确' : '回答错误'}}</view>
+          <view class="explanation-body" wx:if="{{current.explanation}}">{{current.explanation}}</view>
+        </view>
+      </view>
+
+      <!-- 下一题 -->
+      <view class="btn {{answered ? 'btn--primary' : 'btn--disabled'}}" bindtap="next">
+        {{index + 1 >= total ? '查看结果' : '下一题'}}
+      </view>
+    </block>
+  </view>
+
+  <!-- 结果页 -->
+  <view class="result" wx:if="{{finished}}">
+    <view class="result-card">
+      <view class="result-label">{{categoryName}} · {{level}}</view>
+      <view class="result-score">{{correctCount}}<text class="result-total"> / {{total}}</text></view>
+      <view class="result-rate">正确率 {{rateText}}%</view>
+      <view class="result-comment">{{comment}}</view>
+    </view>
+    <view class="btn btn--primary" bindtap="restart">再来一组</view>
+    <view class="btn btn--plain" bindtap="goBack">返回</view>
+  </view>
+</scroll-view>

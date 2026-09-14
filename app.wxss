@@ -1,0 +1,11 @@
+/**app.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #F6F7FB;
+}
+
+.scrollarea {
+  flex: 1;
+}

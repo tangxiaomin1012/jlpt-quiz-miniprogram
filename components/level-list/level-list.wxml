@@ -1,0 +1,18 @@
+<view class="level-list">
+  <view
+    class="level-item"
+    wx:for="{{levels}}"
+    wx:key="level"
+    data-level="{{item.level}}"
+    bindtap="onTap"
+    hover-class="level-item--hover"
+  >
+    <view class="level-badge" style="background: {{item.color}}">{{item.level}}</view>
+    <view class="level-info">
+      <view class="level-title">{{item.level}} 练习</view>
+      <view class="level-sub">题库 {{item.count}} 题 · 每次随机 10 题</view>
+    </view>
+    <view class="level-best" wx:if="{{item.bestText}}">{{item.bestText}}</view>
+    <view class="level-arrow">›</view>
+  </view>
+</view>

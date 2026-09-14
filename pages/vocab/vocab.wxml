@@ -1,0 +1,4 @@
+<navigation-bar title="单词" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <level-list category="vocab"></level-list>
+</scroll-view>

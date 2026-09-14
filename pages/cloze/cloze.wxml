@@ -1,0 +1,4 @@
+<navigation-bar title="填空" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <level-list category="cloze"></level-list>
+</scroll-view>
